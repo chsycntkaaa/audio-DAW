@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Audio DAW & Synthesizer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 font-sans text-slate-100 flex items-center justify-center min-h-screen p-2 sm:p-4 select-none">
+
+  <!-- Main DAW Container -->
+  <div class="w-full max-w-4xl bg-slate-900 rounded-3xl shadow-2xl border-4 border-slate-800 overflow-hidden flex flex-col">
+    
+    <!-- Header / Transport Controls -->
+    <header class="bg-slate-900/90 border-b border-slate-800 p-4 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 font-black">
+          <i class="fa-solid fa-wave-square"></i>
+        </div>
+        <div>
+          <h1 class="font-black text-sm uppercase tracking-wider text-purple-300">Web DAW Studio</h1>
+          <p class="text-[10px] text-slate-400">Synthesizer & Drum Machine</p>
+        </div>
+      </div>
+
+      <!-- Play, Stop & BPM -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700 gap-2">
+          <span class="text-xs font-bold text-slate-400">BPM:</span>
+          <input id="bpm-input" type="number" value="120" min="60" max="180" class="w-12 bg-slate-900 text-amber-400 font-black text-center rounded border border-slate-700 text-xs py-0.5">
+        </div>
+
+        <button id="btn-play" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2 rounded-xl transition shadow-lg active:scale-95 flex items-center gap-2 text-xs">
+          <i class="fa-solid fa-play" id="play-icon"></i> <span id="play-text">Putar</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace Content -->
+    <main class="p-4 space-y-6 bg-slate-950">
+      
+      <!-- Section 1: Drum Machine Sequencer -->
+      <section class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-drum"></i> Drum Machine (Step Sequencer)
+          </h2>
+          <span class="text-[10px] text-slate-500 italic">*Klik kotak untuk mengaktifkan ketukan.</span>
+        </div>
+
+        <div id="drum-rack" class="space-y-2">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Section 2: Synth / Keyboard Workspace -->
+      <section class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-col items-center">
+        <div class="w-full flex justify-between items-center mb-3">
+          <h2 class="text-xs font-black uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+            <i class="fa-solid fa-music"></i> Virtual Synthesizer (Keyboard)
+          </h2>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] text-slate-400">Waveform:</span>
+            <select id="osc-wave" class="bg-slate-800 text-cyan-300 text-xs font-bold px-2 py-1 rounded-lg border border-slate-700 outline-none">
+              <option value="sine">Sine (Halus)</option>
+              <option value="square" selected>Square (Chiptune)</option>
+              <option value="sawtooth">Sawtooth (Tajam)</option>
+              <option value="triangle">Triangle (Organ)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Piano Keys Container -->
+        <div id="piano-keyboard" class="flex justify-center gap-1 bg-slate-950 p-3 rounded-xl border border-slate-800 overflow-x-auto w-full">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
